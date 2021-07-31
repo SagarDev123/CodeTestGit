@@ -70,12 +70,11 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-
-    initDataBase();
-
-
-
-    getEmployeeDetails();
+    if(isEmployeeListAlreadyExist){
+      initDataBase();  //Not Completed
+    }else{
+      getEmployeeDetails();
+    }
   }
 
   Future<void> getEmployeeDetails() async {
@@ -126,13 +125,13 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> initDataBase() async {
-    final database = await $FloorAppDatabase.databaseBuilder('user_database.db').build();
-
-    final personDao = database.personDao;
-    final person = Person(1, 'Frank');
-
-    await personDao.insertPerson(person);
-    final result = await personDao.findPersonById(1);
+    // final database = await $FloorAppDatabase.databaseBuilder('user_database.db').build();
+    //
+    // final personDao = database.personDao;
+    // final person = Person(1, 'Frank');
+    //
+    // await personDao.insertPerson(person);
+    // final result = await personDao.findPersonById(1);
   }
 
 
